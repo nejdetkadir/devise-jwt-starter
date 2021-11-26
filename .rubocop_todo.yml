@@ -68,6 +68,8 @@ Metrics/CyclomaticComplexity:
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
   Max: 13
+  Exclude:
+    - 'db/**/*'
 
 # Offense count: 1
 # Configuration parameters: IgnoredMethods.
@@ -89,6 +91,7 @@ Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
+    - 'db/**/*'
     - 'app/models/application_record.rb'
     - 'config/application.rb'
 
@@ -157,3 +160,7 @@ Style/SymbolArray:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 198
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/**/*'
