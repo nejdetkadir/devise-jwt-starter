@@ -1,3 +1,5 @@
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+
 # Devise JWT Starter
 It is a starter for Ruby on Rails API application with [devise gem](https://github.com/heartcombo/devise) with [devise-jwt](https://github.com/waiting-for-dev/devise-jwt) extension.
 
