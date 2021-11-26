@@ -1,0 +1,62 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0
+  node: circleci/node@2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:3.0.0-node
+    steps:
+      - checkout
+      - ruby/install-deps
+  quality:
+    docker:
+      - image: cimg/ruby:3.0.0-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --require rubocop-rails
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:3.0.0-node
+      - image: postgres:14.1
+        environment:
+          POSTGRES_USER: devise_jwt_starter
+          POSTGRES_DB: devise_jwt_starter_test
+          POSTGRES_PASSWORD: devise_jwt_starter
+          POSTGRES_HOST: 127.0.0.1
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: devise_jwt_starter
+      PGPASSWORD: devise_jwt_starter
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run: 
+          name: Run tests
+          command: bundle exec rspec
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - quality:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
