@@ -3,6 +3,7 @@
 ![Ruby Version](https://img.shields.io/badge/ruby%20v-3.0.0-blue.svg)
 ![Rails Version](https://img.shields.io/badge/rails%20v-6.1.4-blue.svg)
 [![GPLv3 license](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
+[![Deployed to Heroku](https://img.shields.io/badge/deployed_to-heroku-9677ba.svg)](https://devise-jwt-starter.herokuapp.com/)
 
 # Devise JWT Starter
 It is a starter for Ruby on Rails API application with [devise gem](https://github.com/heartcombo/devise) with [devise-jwt](https://github.com/waiting-for-dev/devise-jwt) extension.
