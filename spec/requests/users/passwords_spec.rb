@@ -18,7 +18,7 @@ RSpec.describe "Devise::Passwords", type: :request do
       end
 
       it "returns a message about instructions" do
-        expect(JSON.parse(response.body)["message"]).to eq(I18n.t('devise.confirmations.send_instructions'))
+        expect(JSON.parse(response.body)["message"]).to eq(I18n.t('devise.passwords.send_instructions'))
       end
 
       it "must send an email about instructions of reset password" do

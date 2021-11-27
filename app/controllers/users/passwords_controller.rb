@@ -8,7 +8,7 @@ module Users
       yield resource if block_given?
 
       if successfully_sent?(resource)
-        respond_with({ message: I18n.t('devise.confirmations.send_instructions') }, :ok)
+        respond_with({ message: I18n.t('devise.passwords.send_instructions') }, :ok)
       else
         respond_with resource.errors, :unprocessable_entity
       end
@@ -20,7 +20,7 @@ module Users
       yield resource if block_given?
 
       if resource.errors.empty?
-        respond_with resource, :ok
+        head :ok
       else
         set_minimum_password_length
         respond_with resource.errors, :unprocessable_entity
