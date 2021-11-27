@@ -88,12 +88,7 @@ Style/ClassAndModuleChildren:
 # Offense count: 2
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'db/**/*'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+  Enabled: false
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -162,5 +157,8 @@ Layout/LineLength:
   Max: 198
 
 Metrics/AbcSize:
+  Enabled: false
+
+CreateTableWithTimestamps:
   Exclude:
     - 'db/**/*'
